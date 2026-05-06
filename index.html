@@ -9,20 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 
-body {
+body{
   font-family:'Cairo', sans-serif;
   color:white;
+  background:#070707;
 }
 
-/* الصفحة الأولى */
-.hero {
+/* HERO */
+.hero{
   height:100vh;
   display:flex;
   justify-content:center;
@@ -31,261 +27,368 @@ body {
   overflow:hidden;
 }
 
-/* الخلفية Black & Gold */
-.hero::before {
+.hero::before{
   content:"";
   position:absolute;
   inset:0;
-
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255,215,0,0.25), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(255,215,0,0.10), transparent 45%),
-    radial-gradient(circle at 50% 100%, #1a1a1a, #000000 70%);
-
+  background:linear-gradient(135deg,#050505,#111,#1a1a1a);
   z-index:-2;
 }
 
-/* Glow */
-.hero::after {
+.hero::after{
   content:"";
   position:absolute;
   inset:0;
-
-  background:
-    radial-gradient(circle at top, rgba(255,215,0,0.30), transparent 55%),
-    radial-gradient(circle at bottom, rgba(255,215,0,0.10), transparent 60%),
-    linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
-
+  background:radial-gradient(circle at top, rgba(255,215,0,0.18), transparent 65%);
   z-index:-1;
 }
 
-/* الكارت */
-.card {
-  background:rgba(0,0,0,0.55);
+.card{
+  background:rgba(10,10,10,0.65);
   padding:40px;
   border-radius:30px;
   text-align:center;
   backdrop-filter:blur(10px);
   width:90%;
   max-width:500px;
-  z-index:2;
+  border:1px solid rgba(255,215,0,0.15);
 }
 
-.names {
+.names{
   font-family:'Playfair Display', serif;
   font-size:36px;
   color:gold;
   margin-bottom:10px;
 }
 
-.welcome {
-  font-size:18px;
-  margin-bottom:20px;
-  color:#eee;
-}
+.welcome{font-size:18px;margin-bottom:20px;color:#eee;}
 
-.countdown {
+.countdown{
   display:flex;
   justify-content:space-between;
   margin-top:20px;
 }
 
-.box {
+.box{
   width:23%;
-  background:rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.08);
   padding:10px;
   border-radius:10px;
 }
-
-.box span {
-  font-size:20px;
+.box span{
+  display:block;
+  font-size:22px;
   font-weight:bold;
+  color:gold;
+  text-shadow:0 0 10px rgba(255,215,0,0.4);
 }
-
-/* 👇 Scroll Down */
-.scroll-down {
-  position:absolute;
-  bottom:25px;
-  left:50%;
-  transform:translateX(-50%);
-
+/* ⬇️ */
+.scroll-down{
+  margin-top:18px;
   font-size:14px;
-  color:rgba(255,215,0,0.9);
-  letter-spacing:2px;
-
+  color:gold;
   animation:bounce 1.5s infinite;
+  cursor:pointer;
 }
 
-@keyframes bounce {
-  0%,100% { transform:translateX(-50%) translateY(0); }
-  50% { transform:translateX(-50%) translateY(-10px); }
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(6px);}
 }
 
-/* الصفحة التانية */
-.details {
+/* DETAILS */
+.details{
   min-height:100vh;
-  background:linear-gradient(135deg,#0f0f0f,#1c1c1c,#0f0f0f);
+  background:linear-gradient(135deg,#0a0a0a,#121212,#0a0a0a);
   display:flex;
   justify-content:center;
   align-items:center;
   padding:40px;
-  position:relative;
 }
 
-.details-box {
+.details-box{
   width:90%;
   max-width:600px;
   text-align:center;
 }
 
-.title {
+.title{
   font-size:30px;
   color:gold;
   margin-bottom:25px;
   font-family:'Playfair Display', serif;
 }
 
-.event-card {
+.event-card{
   margin:12px 0;
   padding:18px;
   border-radius:18px;
-  font-size:18px;
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,215,0,0.2);
-  backdrop-filter:blur(8px);
-  transition:0.3s;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,215,0,0.15);
 }
 
-.event-card:hover {
-  transform:scale(1.03);
-  border-color:gold;
-}
-
-.location-btn {
+.location-btn{
   display:inline-block;
   margin-top:20px;
   padding:12px 25px;
   border-radius:30px;
   background:gold;
   color:black;
-  font-weight:bold;
   text-decoration:none;
 }
 
-/* اللوجو */
-.maher-logo {
+/* صور */
+.new-gallery{margin-top:30px;}
+.new-gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.new-gallery-grid img{
+  width:100%;
+  border-radius:15px;
+  cursor:pointer;
+}
+
+/* تعليقات */
+#commentsBox div{
+  background:rgba(255,255,255,0.05);
+  padding:10px;
+  margin:10px;
+  border-radius:10px;
+  border:1px solid rgba(255,215,0,0.15);
+}
+
+/* لوجو */
+.maher-logo{
   position:absolute;
   top:20px;
   left:20px;
-
   width:110px;
   height:110px;
-
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-
   border-radius:50%;
   background:radial-gradient(circle at top, rgba(255,215,0,0.25), rgba(0,0,0,0.6));
-  border:2px solid rgba(255,215,0,0.6);
-  box-shadow:0 0 25px rgba(255,215,0,0.35);
-
+  border:2px solid gold;
   color:gold;
-  font-family:'Playfair Display', serif;
-  text-align:center;
-
-  z-index:10;
 }
 
+/* أزرار ثابتة */
+#music-btn,#whatsapp-btn{
+  position:fixed;
+  right:20px;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+#music-btn{
+  bottom:20px;
+  background:#000;
+  border:2px solid gold;
+  color:gold;
+  cursor:pointer;
+}
+
+#whatsapp-btn{
+  bottom:90px;
+  background:#25D366;
+  color:white;
+  text-decoration:none;
+}
+
+/* أنيميشن */
+.fade-up{opacity:0;transform:translateY(40px);transition:1s;}
+.show{opacity:1;transform:translateY(0);}
+
 /* موبايل */
-@media (max-width:768px){
+@media(max-width:768px){
 
-  .card{
-    width:92%;
-    padding:20px;
-  }
-
-  .names{
-    font-size:28px;
-  }
+  .card{padding:20px;}
 
   .countdown{
-    flex-wrap:wrap;
-    gap:10px;
+    flex-wrap:nowrap;
+    justify-content:space-between;
+    gap:6px;
   }
 
-  .box{
-    width:48%;
+.box{
+  width:23%;
+  min-width:70px;
+  padding:12px 8px;
+  border-radius:18px;
+
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,215,0,0.25);
+
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 15px rgba(255,215,0,0.08);
+
+  transition:0.3s;
+}
+
+  .new-gallery-grid{
+    grid-template-columns:1fr;
   }
+
 }
 </style>
 </head>
 
 <body>
 
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:#000c;justify-content:center;align-items:center;z-index:9999;">
+<img id="lightbox-img" style="max-width:90%;max-height:80%;border-radius:20px;">
+</div>
+
+<!-- HERO -->
 <section class="hero">
+<div class="maher-logo"><span>ENG</span><b>MAHER</b></div>
 
-  <div class="maher-logo">
-    <span>ENG</span>
-    <b>MAHER</b>
-  </div>
+<div class="card">
+<div class="names">Fared & Shrouk</div>
+<div class="welcome">يسرنا دعوتكم لحضور حفل زفافنا</div>
 
-  <div class="card">
-    <div class="names">Fared & Shrouk</div>
-    <div class="welcome">يسرنا دعوتكم لحضور حفل زفافنا</div>
+<div class="countdown">
+<div class="box"><span id="days">0</span><br>يوم</div>
+<div class="box"><span id="hours">0</span><br>ساعة</div>
+<div class="box"><span id="minutes">0</span><br>دقيقة</div>
+<div class="box"><span id="seconds">0</span><br>ثانية</div>
+</div>
 
-    <div class="countdown">
-      <div class="box"><span id="days">0</span><br>يوم</div>
-      <div class="box"><span id="hours">0</span><br>ساعة</div>
-      <div class="box"><span id="minutes">0</span><br>دقيقة</div>
-      <div class="box"><span id="seconds">0</span><br>ثانية</div>
-    </div>
-  </div>
+<div class="scroll-down" onclick="document.querySelector('.details').scrollIntoView({behavior:'smooth'})">
+⬇ انزل للأسفل
+</div>
 
-  <!-- 👇 زر النزول -->
-  <div class="scroll-down">
-    ⬇ Scroll Down
-  </div>
-
+</div>
 </section>
 
+<!-- DETAILS -->
 <section class="details">
+<div class="details-box">
 
-  <div class="details-box">
+<div class="title">✨فرحتنا تكمل بحضوركم يوم</div>
 
-    <div class="title">✨فرحتنا تكمل بحضوركم يوم</div>
+<div class="event-card fade-up"> 🤲📖كتب الكتاب<br>25/ 6 / 2026</div>
+<div class="event-card fade-up">🍽️ مائدة الغداء<br>28 / 6 / 2026</div>
+<div class="event-card fade-up">💍 حفل الزفاف<br>29 / 6 / 2026</div>
+<div class="event-card fade-up">📍 G Marriott Hall - Talkha</div>
 
-    <div class="event-card">🌿 ليلة الحنة<br>24 / 6 / 2026</div>
-    <div class="event-card">🍽️ مائدة الغداء<br>28 / 6 / 2026</div>
-    <div class="event-card">💍 حفل الزفاف<br>29 / 6 / 2026</div>
-    <div class="event-card">📍 G Marriott Hall - Talkha</div>
+<a class="location-btn" href="https://www.google.com/maps?q=G+Marriott+Hall+Talkha" target="_blank">
+📍 Open in Google Maps
+</a>
 
-    <a class="location-btn"
-       href="https://www.google.com/maps/search/?api=1&query=G+Marriott+Hall+Talkha"
-       target="_blank">
-      📌 View Location
-    </a>
+<iframe src="https://www.google.com/maps?q=G+Marriott+Hall+Talkha&output=embed"
+width="100%" height="250" style="margin-top:15px;border:none;border-radius:15px;"></iframe>
 
-  </div>
+<!-- 📸 الصور -->
+<div class="new-gallery fade-up">
+<div class="new-gallery-grid">
+<img src="1.jpg"openImg(this)">
+<img src="2.jpg" onclick="openImg(this)">
+<img src="3.jpg" onclick="openImg(this)">
+<img src="4.jpg" onclick="openImg(this)">
+</div>
+</div>
 
+<!-- 💬 التعليقات -->
+<div style="margin-top:30px;">
+<h3 style="color:gold;">💬 مباركه للعروسين</h3>
+
+<input id="name" placeholder="اسمك" style="width:90%;padding:10px;margin:5px;border-radius:10px;border:none;">
+<textarea id="msg" placeholder="اكتب رسالتك" style="width:90%;height:80px;padding:10px;margin:5px;border-radius:10px;border:none;"></textarea>
+
+<button onclick="addComment()" style="padding:10px 20px;background:gold;border:none;border-radius:20px;">
+إرسال
+</button>
+
+<div id="commentsBox"></div>
+</div>
+
+</div>
 </section>
+
+<!-- 🎵 MUSIC -->
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="music-btn" onclick="toggleMusic()">🔇</div>
+
+<a href="https://wa.me/201069845776" target="_blank" id="whatsapp-btn">💬</a>
 
 <script>
-const weddingDate = new Date(2026, 5, 29, 20, 0, 0).getTime();
+// عداد
+const weddingDate=new Date(2026,5,29,20).getTime();
+setInterval(()=>{
+let now=new Date().getTime();
+let diff=weddingDate-now;
+days.innerText=Math.floor(diff/86400000);
+hours.innerText=Math.floor((diff/3600000)%24);
+minutes.innerText=Math.floor((diff/60000)%60);
+seconds.innerText=Math.floor((diff/1000)%60);
+},1000);
 
-setInterval(() => {
-  const now = new Date().getTime();
-  let diff = weddingDate - now;
+// موسيقى
+const music=document.getElementById("bgMusic");
+const btn=document.getElementById("music-btn");
 
-  if (diff < 0) diff = 0;
+document.body.addEventListener("click",()=>{
+if(music.paused){music.volume=0.3;music.play();btn.innerHTML="🔊";}
+},{once:true});
 
-  document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-  document.getElementById("hours").innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  document.getElementById("minutes").innerText = Math.floor((diff / (1000 * 60)) % 60);
-  document.getElementById("seconds").innerText = Math.floor((diff / 1000) % 60);
+function toggleMusic(){
+if(music.paused){music.play();btn.innerHTML="🔊";}
+else{music.pause();btn.innerHTML="🔇";}
+}
 
-}, 1000);
+// تعليقات محفوظة
+function addComment(){
+let name=document.getElementById("name").value;
+let msg=document.getElementById("msg").value;
+if(!name||!msg)return;
+
+let data=JSON.parse(localStorage.getItem("comments")||"[]");
+data.push({name,msg});
+localStorage.setItem("comments",JSON.stringify(data));
+showComments();
+name.value="";msg.value="";
+}
+
+function showComments(){
+let data=JSON.parse(localStorage.getItem("comments")||"[]");
+let box=document.getElementById("commentsBox");
+box.innerHTML="";
+data.forEach(c=>{
+let d=document.createElement("div");
+d.innerHTML="<b style='color:gold'>"+c.name+"</b><br>"+c.msg;
+box.appendChild(d);
+});
+}
+showComments();
+
+// صور
+function openImg(el){
+lightbox.style.display="flex";
+lightboxImg.src=el.src;
+}
+
+// انيميشن
+window.addEventListener('scroll',()=>{
+document.querySelectorAll('.fade-up').forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-100){
+el.classList.add('show');
+}
+});
+});
 </script>
 
 </body>
