@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -246,6 +247,150 @@ body{
   }
 
 }
+
+#intro{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999999;
+  animation:introHide 4.5s forwards;
+}
+
+.intro-text{
+  font-size:60px;
+  font-weight:900;
+  color:gold;
+  letter-spacing:6px;
+  text-align:center;
+
+  text-shadow:
+    0 0 10px gold,
+    0 0 20px gold,
+    0 0 40px rgba(255,215,0,0.8),
+    0 0 80px rgba(255,215,0,0.6);
+
+  animation:
+    glowPulse 1.5s ease-in-out infinite,
+    cinematicShake 2.5s ease-in-out;
+}
+
+/* ✨ Glow قوي بيزيد ويقل */
+@keyframes glowPulse{
+  0%,100%{
+    text-shadow:
+      0 0 10px gold,
+      0 0 20px gold,
+      0 0 40px rgba(255,215,0,0.7);
+  }
+  50%{
+    text-shadow:
+      0 0 20px gold,
+      0 0 40px gold,
+      0 0 90px rgba(255,215,0,1);
+  }
+}
+
+/* 🎬 اهتزاز سينمائي خفيف */
+@keyframes cinematicShake{
+  0%{transform:scale(0.9) translateY(10px); opacity:0;}
+  20%{opacity:1;}
+  40%{transform:scale(1.05) translateY(-5px);}
+  60%{transform:scale(1) translateX(-3px);}
+  80%{transform:scale(1) translateX(3px);}
+  100%{transform:scale(1) translateY(0);}
+}
+
+/* ⏳ اختفاء ناعم */
+@keyframes introHide{
+  0%,75%{
+    opacity:1;
+    visibility:visible;
+  }
+  100%{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+/* النص */
+.intro-text{
+  font-size:60px;
+  font-weight:800;
+  color:gold;
+  letter-spacing:5px;
+  text-shadow:0 0 25px gold;
+  animation: glowIn 2s ease forwards;
+}
+
+/* ظهور النص */
+@keyframes glowIn{
+  0%{opacity:0; transform:scale(0.7);}
+  100%{opacity:1; transform:scale(1);}
+}
+
+/* الدخان */
+
+/* حركة الدخان */
+
+
+/* اختفاء الانترو */
+#intro{
+  animation: fadeOutIntro 4s forwards;
+}
+
+@keyframes fadeOutIntro{
+  0%,70%{opacity:1;}
+  100%{opacity:0; visibility:hidden;}
+}
+
+.intro-text{
+  font-size:60px;
+  font-weight:900;
+  color:gold;
+  position:relative;
+  overflow:hidden;
+  letter-spacing:6px;
+  text-shadow:0 0 20px gold;
+}
+
+/* خط نور متحرك */
+.intro-text::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+  );
+  animation: lightSweep 2.5s ease-in-out;
+}
+
+@keyframes lightSweep{
+  0%{left:-100%;}
+  100%{left:100%;}
+}#intro::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 40%, rgba(255,255,255,0.05), transparent 50%),
+             radial-gradient(circle at 70% 60%, rgba(255,215,0,0.04), transparent 60%);
+  filter: blur(30px);
+  animation: smokeMove 3s ease-in-out;
+}
+
+@keyframes smokeMove{
+  0%{opacity:0; transform:scale(1);}
+  50%{opacity:1;}
+  100%{opacity:0; transform:scale(1.2);}
+}
+
 </style>
 </head>
 
@@ -277,6 +422,14 @@ function addComment(){
 
 
 <body>
+
+
+<div id="intro">
+  <div class="intro-text">
+    ENG FARED
+  </div>
+</div>
+
 
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:#000c;justify-content:center;align-items:center;z-index:9999;">
