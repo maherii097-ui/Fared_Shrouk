@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -8,23 +7,42 @@
 <title>Wedding Invitation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Marhey:wght@400;700&display=swap" rel="stylesheet">
 <style>
+
+  body{
+  font-family:'Cairo', sans-serif;
+  color:white;
+  background:
+    radial-gradient(circle at top, rgba(255,215,0,0.08), transparent 60%),
+    radial-gradient(circle at bottom, rgba(255,255,255,0.03), transparent 60%),
+    #070707;
+}
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 
 
 
-
-
-
-
-
-body{
-  font-family:'Cairo', sans-serif;
-  color:white;
-  background:#070707;
+  #bg-video{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-10;
+  opacity:0.30;
+  filter:brightness(0.45) contrast(1.1) saturate(1.1);
+  pointer-events:none;
 }
 
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.45));
+  z-index:-5;
+}
+  
 /* HERO */
 .hero{
   height:100vh;
@@ -69,19 +87,22 @@ body{
   margin-bottom:10px;
 }
 
-.welcome{font-size:18px;margin-bottom:20px;color:#eee;}
-
-.countdown{
-  display:flex;
-  justify-content:space-between;
-  margin-top:20px;
+.welcome{
+  font-family:'Marhey', sans-serif;
+  font-size:22px;
+  color:#fff;
+  margin-bottom:18px;
+  line-height:1.8;
+  text-shadow:0 0 10px rgba(255,215,0,0.25);
 }
 
 .box{
-  width:23%;
+  flex:1;
+  min-width:0;
   background:rgba(255,255,255,0.08);
-  padding:10px;
-  border-radius:10px;
+  padding:10px 5px;
+  border-radius:12px;
+  text-align:center;
 }
 .box span{
   display:block;
@@ -90,15 +111,6 @@ body{
   color:gold;
   text-shadow:0 0 10px rgba(255,215,0,0.4);
 }
-/* ⬇️ */
-.scroll-down{
-  margin-top:18px;
-  font-size:14px;
-  color:gold;
-  animation:bounce 1.5s infinite;
-  cursor:pointer;
-}
-
 @keyframes bounce{
   0%,100%{transform:translateY(0);}
   50%{transform:translateY(6px);}
@@ -211,7 +223,6 @@ body{
   color:white;
   text-decoration:none;
 }
-
 /* أنيميشن */
 .fade-up{opacity:0;transform:translateY(40px);transition:1s;}
 .show{opacity:1;transform:translateY(0);}
@@ -219,28 +230,37 @@ body{
 /* موبايل */
 @media(max-width:768px){
 
-  .card{padding:20px;}
-
-  .countdown{
-    flex-wrap:nowrap;
-    justify-content:space-between;
-    gap:6px;
+  .card{
+    padding:20px;
   }
 
-.box{
-  width:23%;
-  min-width:70px;
-  padding:12px 8px;
-  border-radius:18px;
-
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,215,0,0.25);
-
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 15px rgba(255,215,0,0.08);
-
-  transition:0.3s;
+.countdown{
+  display:flex !important;
+  flex-direction:row !important;
+  justify-content:space-between !important;
+  align-items:center;
+  gap:10px;
 }
+
+.box{
+  flex:1;
+  min-width:0;
+  text-align:center;
+}
+  .box{
+    width:23%;
+    min-width:70px;
+    padding:12px 8px;
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,215,0,0.25);
+
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 15px rgba(255,215,0,0.08);
+
+    transition:0.3s;
+  }
 
   .new-gallery-grid{
     grid-template-columns:1fr;
@@ -248,149 +268,149 @@ body{
 
 }
 
-#intro{
+
+
+.intro-line{
+  color:white;
+  font-size:32px;
+  letter-spacing:2px;
+  opacity:0;
+  text-align:center;
+  position:absolute;
+  font-family:'Playfair Display', serif;
+}
+
+/* أول جملة */
+
+
+
+/* اللوجو */
+.intro-logo{
+  position:absolute;
+  font-size:58px;
+  color:gold;
+  font-weight:900;
+  letter-spacing:6px;
+  text-align:center;
+  opacity:0;
+.intro-logo span{
+  margin:0 8px;
+  display:inline-block;
+}
+  text-shadow:
+    0 0 10px gold,
+    0 0 25px gold,
+    0 0 50px rgba(255,215,0,0.7);
+
+  animation:showLogo 2s forwards;
+  animation-delay:6s;
+}
+
+  
+  
+
+/* موبايل */@media(max-width:768px){
+
+  .intro-line{
+    font-size:22px;
+    padding:20px;
+  }
+
+  .intro-logo{
+  font-size:32px;
+  letter-spacing:3px;
+  text-align:center;
+  width:100%;
+  padding:0 15px;
+  line-height:1.4;
+.intro-logo span{
+  margin:0 8px;
+  display:inline-block;
+}
+  text-shadow:
+    0 0 10px gold,
+    0 0 20px rgba(255,215,0,0.8),
+    0 0 40px rgba(255,215,0,0.5);
+}
+  .countdown{
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:space-between;
+    align-items:center;
+    gap:6px;
+  }
+
+  .box{
+    flex:1;
+    min-width:0;
+    padding:10px 4px;
+    border-radius:14px;
+    text-align:center;
+  }
+
+  .box span{
+    font-size:18px;
+  }
+
+  .welcome{
+    font-size:18px;
+    line-height:1.7;
+  }
+
+}
+
+ 
+/* START SCREEN */
+#startScreen{
   position:fixed;
   inset:0;
-  background:#000;
+  background:black;
   display:flex;
   justify-content:center;
   align-items:center;
   z-index:999999;
-  animation:introHide 4.5s forwards;
-}
-
-.intro-text{
-  font-size:60px;
-  font-weight:900;
   color:gold;
-  letter-spacing:6px;
-  text-align:center;
-
-  text-shadow:
-    0 0 10px gold,
-    0 0 20px gold,
-    0 0 40px rgba(255,215,0,0.8),
-    0 0 80px rgba(255,215,0,0.6);
-
-  animation:
-    glowPulse 1.5s ease-in-out infinite,
-    cinematicShake 2.5s ease-in-out;
+  font-size:28px;
+  font-family:'Playfair Display', serif;
+  cursor:pointer;
+  animation:pulse 1.5s infinite;
 }
 
-/* ✨ Glow قوي بيزيد ويقل */
-@keyframes glowPulse{
-  0%,100%{
-    text-shadow:
-      0 0 10px gold,
-      0 0 20px gold,
-      0 0 40px rgba(255,215,0,0.7);
-  }
-  50%{
-    text-shadow:
-      0 0 20px gold,
-      0 0 40px gold,
-      0 0 90px rgba(255,215,0,1);
-  }
-}
-
-/* 🎬 اهتزاز سينمائي خفيف */
-@keyframes cinematicShake{
-  0%{transform:scale(0.9) translateY(10px); opacity:0;}
-  20%{opacity:1;}
-  40%{transform:scale(1.05) translateY(-5px);}
-  60%{transform:scale(1) translateX(-3px);}
-  80%{transform:scale(1) translateX(3px);}
-  100%{transform:scale(1) translateY(0);}
-}
-
-/* ⏳ اختفاء ناعم */
-@keyframes introHide{
-  0%,75%{
-    opacity:1;
-    visibility:visible;
-  }
-  100%{
-    opacity:0;
-    visibility:hidden;
-  }
-}
-/* النص */
-.intro-text{
-  font-size:60px;
-  font-weight:800;
-  color:gold;
-  letter-spacing:5px;
-  text-shadow:0 0 25px gold;
-  animation: glowIn 2s ease forwards;
-}
-
-/* ظهور النص */
-@keyframes glowIn{
-  0%{opacity:0; transform:scale(0.7);}
-  100%{opacity:1; transform:scale(1);}
-}
-
-/* الدخان */
-
-/* حركة الدخان */
-
-
-/* اختفاء الانترو */
-#intro{
-  animation: fadeOutIntro 4s forwards;
-}
-
-@keyframes fadeOutIntro{
-  0%,70%{opacity:1;}
-  100%{opacity:0; visibility:hidden;}
-}
-
-.intro-text{
-  font-size:60px;
-  font-weight:900;
-  color:gold;
-  position:relative;
-  overflow:hidden;
-  letter-spacing:6px;
-  text-shadow:0 0 20px gold;
-}
-
-/* خط نور متحرك */
-.intro-text::after{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
-  background:linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.6),
-    transparent
-  );
-  animation: lightSweep 2.5s ease-in-out;
-}
-
-@keyframes lightSweep{
-  0%{left:-100%;}
-  100%{left:100%;}
-}#intro::before{
-  content:"";
-  position:absolute;
+/* CINEMATIC INTRO */
+#cinematicIntro{
+  position:fixed;
   inset:0;
-  background:radial-gradient(circle at 30% 40%, rgba(255,255,255,0.05), transparent 50%),
-             radial-gradient(circle at 70% 60%, rgba(255,215,0,0.04), transparent 60%);
-  filter: blur(30px);
-  animation: smokeMove 3s ease-in-out;
+  background:black;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:999998;
 }
 
-@keyframes smokeMove{
-  0%{opacity:0; transform:scale(1);}
-  50%{opacity:1;}
-  100%{opacity:0; transform:scale(1.2);}
+/* النصوص */
+.intro-line{
+  position:absolute;
+  color:white;
+  font-size:30px;
+  opacity:0;
+  transition:1s;
+  text-align:center;
 }
 
+.intro-logo{
+  font-size:55px;
+  color:gold;
+  opacity:0;
+  text-shadow:0 0 20px gold;
+  transition:1s;
+}
+
+/* animation */
+@keyframes pulse{
+  0%,100%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.05);opacity:0.7;}
+}
 </style>
 </head>
 
@@ -399,6 +419,7 @@ body{
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
 <script>
+
 firebase.initializeApp({
   apiKey: "AIzaSyAEQbYRt4JN_5QXqN6s94BqmZ4zAEqAsN0",
   databaseURL: "https://fared26-default-rtdb.firebaseio.com/"
@@ -406,30 +427,25 @@ firebase.initializeApp({
 
 var db = firebase.database();
 
-function addComment(){
-  console.log("clicked");
-
-  db.ref("comments").push({
-    name:"test",
-    msg:"hello"
-  });
-}
 </script>
 
 
-
-
-
-
 <body>
-
-
-<div id="intro">
-  <div class="intro-text">
-    ENG FARED
-  </div>
+<!-- START SCREEN -->
+<div id="startScreen">
+  CLICK TO START
 </div>
-
+<!-- AUDIO -->
+<audio id="voice" src="voice.mp3"></audio>
+<audio id="introMusic" src="intro-music.mp3"></audio>
+<!-- CINEMATIC INTRO -->
+<div id="cinematicIntro">
+  <div class="intro-line" id="line1">Every Love Story Is Beautiful...</div>
+  <div class="intro-line" id="line2">But Ours Is My Favorite ❤️</div>
+  <div class="intro-logo" id="logo">
+ Eng FARED <span></span> 
+</div>
+</div>
 
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:#000c;justify-content:center;align-items:center;z-index:9999;">
@@ -452,20 +468,20 @@ function addComment(){
 </div>
 
 <div class="scroll-down" onclick="document.querySelector('.details').scrollIntoView({behavior:'smooth'})">
-⬇ انزل للأسفل
+⬇️ انزل للأسفل
 </div>
 
-</div>
+</div> <!-- قفلة card -->
+
 </section>
-
 <!-- DETAILS -->
 <section class="details">
 <div class="details-box">
 
-<div class="title">✨فرحتنا تكمل بحضوركم يوم</div>
+<div class="title">✨فرحتنا تكمل بحضوركم</div>
 
 <div class="event-card fade-up"> 🤲📖كتب الكتاب<br>25/ 6 / 2026</div>
-<div class="event-card fade-up">🍽️ مائدة الغداء<br>28 / 6 / 2026</div>
+<div class="event-card fade-up">🍽 مائدة الغداء<br>28 / 6 / 2026</div>
 <div class="event-card fade-up">💍 حفل الزفاف<br>29 / 6 / 2026</div>
 <div class="event-card fade-up">📍 G Marriott Hall - Talkha</div>
 
@@ -505,37 +521,42 @@ width="100%" height="250" style="margin-top:15px;border:none;border-radius:15px;
 
 <!-- 🎵 MUSIC -->
 <audio id="bgMusic" loop>
-<source src="music.mp3" type="audio/mpeg">
+<source src="background-music.mp3" type="audio/mpeg">
 </audio>
 
 <div id="music-btn" onclick="toggleMusic()">🔇</div>
 
 <a href="https://wa.me/201069845776" target="_blank" id="whatsapp-btn">💬</a>
-
 <script>
 // عداد
-const weddingDate=new Date(2026,5,29,20).getTime();
-setInterval(()=>{
-let now=new Date().getTime();
-let diff=weddingDate-now;
-days.innerText=Math.floor(diff/86400000);
-hours.innerText=Math.floor((diff/3600000)%24);
-minutes.innerText=Math.floor((diff/60000)%60);
-seconds.innerText=Math.floor((diff/1000)%60);
-},1000);
+// ===== COUNTDOWN =====
+const weddingDate = new Date("2026-06-29T00:00:00").getTime();
 
-// موسيقى
-const music=document.getElementById("bgMusic");
-const btn=document.getElementById("music-btn");
+function updateCountdown() {
+  const now = new Date().getTime();
+  const diff = weddingDate - now;
 
-document.body.addEventListener("click",()=>{
-if(music.paused){music.volume=0.3;music.play();btn.innerHTML="🔊";}
-},{once:true});
+  if (diff <= 0) return;
 
-function toggleMusic(){
-if(music.paused){music.play();btn.innerHTML="🔊";}
-else{music.pause();btn.innerHTML="🔇";}
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
 }
+
+// تشغيل أول مرة
+updateCountdown();
+
+// تحديث كل ثانية
+setInterval(updateCountdown, 1000);
+// موسيقى
+
+
 
 // تعليقات محفوظة
 function addComment(){
@@ -554,35 +575,140 @@ function addComment(){
 }
 
 // عرض التعليقات
-db.ref("comments").on("value", function(snapshot){
-  let box=document.getElementById("commentsBox");
-  box.innerHTML="";
+db.ref("comments").on("child_added", function(snapshot){
 
-  snapshot.forEach(function(child){
-    let data=child.val();
+  let data = snapshot.val();
 
-    let div=document.createElement("div");
-    div.innerHTML="<b style='color:gold'>"+data.name+"</b><br>"+data.msg;
+  let div = document.createElement("div");
+  div.innerHTML = "<b style='color:gold'>" + data.name + "</b><br>" + data.msg;
 
-    box.appendChild(div);
-  });
+  document.getElementById("commentsBox").appendChild(div);
+
 });
-
-// صور
-function openImg(el){
-lightbox.style.display="flex";
-lightboxImg.src=el.src;
-}
-
 // انيميشن
-window.addEventListener('scroll',()=>{
-document.querySelectorAll('.fade-up').forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight-100){
-el.classList.add('show');
-}
-});
-});
-</script>
 
+  function handleScrollAnimation(){
+  document.querySelectorAll('.fade-up').forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+}
+
+window.addEventListener('scroll', handleScrollAnimation);
+window.addEventListener('load', handleScrollAnimation);
+
+
+
+// ===== MUSIC TOGGLE =====
+
+
+
+  /* =========================
+     MUSIC TOGGLE
+  ========================= */
+  window.toggleMusic = function(){
+
+    if(!bgMusic) return;
+
+    if(bgMusic.paused){
+      bgMusic.volume = 0.6;
+      bgMusic.play();
+      btn.innerHTML = "🔊";
+    } else {
+      bgMusic.pause();
+      btn.innerHTML = "🔇";
+    }
+  };
+
+  /* =========================
+     INTRO SEQUENCE (FIXED FLOW)
+  ========================= */
+const startScreen = document.getElementById("startScreen");
+
+const intro = document.getElementById("cinematicIntro");
+const line1 = document.getElementById("line1");
+const line2 = document.getElementById("line2");
+const logo = document.getElementById("logo");
+
+const voice = document.getElementById("voice");
+const introMusic = document.getElementById("introMusic");
+
+function runIntro(){
+
+  // reset
+  introMusic.currentTime = 0;
+  voice.currentTime = 0;
+
+  introMusic.volume = 0.7;
+  voice.volume = 1;
+
+  introMusic.play();
+  voice.play();
+
+  // Step 1
+  setTimeout(()=>{
+    line1.style.opacity = "1";
+  }, 500);
+
+  // Step 2
+  setTimeout(()=>{
+    line1.style.opacity = "0";
+    line2.style.opacity = "1";
+  }, 3500);
+
+  // Step 3
+  setTimeout(()=>{
+    line2.style.opacity = "0";
+    logo.style.opacity = "1";
+  }, 6500);
+
+  // End intro
+  setTimeout(()=>{
+
+    introMusic.pause();
+    voice.pause();
+
+    // تشغيل موسيقى الموقع
+    const bgMusic = document.getElementById("bgMusic");
+
+    bgMusic.volume = 0.8;
+    bgMusic.play();
+
+    // تغيير زر الصوت
+    document.getElementById("music-btn").innerHTML = "🔊";
+
+    // إخفاء الانترو
+    intro.style.transition = "1s";
+    intro.style.opacity = "0";
+
+    setTimeout(()=>{
+      intro.remove();
+    }, 1000);
+
+  }, 10000);
+}
+
+// START CLICK
+startScreen.addEventListener("click", async ()=>{
+
+  startScreen.style.display = "none";
+
+  try{
+    await introMusic.play();
+    await voice.play();
+
+    introMusic.pause();
+    voice.pause();
+
+  }catch(e){
+    console.log("audio blocked", e);
+  }
+
+  runIntro();
+});
+
+
+</script>
 </body>
 </html>
