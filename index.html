@@ -21,7 +21,7 @@
 }
 
 html{
-  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
 }
 
 body{
@@ -58,7 +58,6 @@ section{
   flex-direction:column;
   text-align:center;
   padding:40px 20px;
-  scroll-snap-align:start;
   position:relative;
 }
 
@@ -278,6 +277,7 @@ section{
   border:2px solid rgba(255, 255, 255, 0.9);
   text-decoration:none;
   right:20px;
+  touch-action:manipulation;
 }
 
 #music-btn{
@@ -537,7 +537,7 @@ section{
   .mobile-stars span:nth-child(11){left:48%;animation-duration:7s;}
   .mobile-stars span:nth-child(12){left:62%;animation-duration:11s;}
   .mobile-stars span:nth-child(13){left:77%;animation-duration:8s;}
-  .mobile-stars span:nth-child(14){left:88%;animation-duration:10s;}
+  .mobile-stars span:nth-child(14){left:88%;animation-duration:10px;}
   .mobile-stars span:nth-child(15){left:5%;animation-duration:13s;}
   .mobile-stars span:nth-child(16){left:27%;animation-duration:6s;}
   .mobile-stars span:nth-child(17){left:41%;animation-duration:14s;}
@@ -775,5 +775,4 @@ function openImg(img){
 </script>
 </body>
 </html>
-
 
