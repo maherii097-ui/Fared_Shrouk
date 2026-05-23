@@ -8,359 +8,61 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Marhey:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
 <style>
 
-  body{
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+html{
+  scroll-snap-type:y mandatory;
+}
+
+body{
   font-family:'Cairo', sans-serif;
   color:white;
-  background:
-    radial-gradient(circle at top, rgba(255,215,0,0.08), transparent 60%),
-    radial-gradient(circle at bottom, rgba(255,255,255,0.03), transparent 60%),
-    #070707;
-}
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
-
-
-
-  #bg-video{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-10;
-  opacity:0.30;
-  filter:brightness(0.45) contrast(1.1) saturate(1.1);
-  pointer-events:none;
+  overflow-x:hidden;
+  position:relative;
 }
 
+/* ===== BACKGROUND ===== */
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.45));
-  z-index:-5;
-}
-  
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  position:relative;
-  overflow:hidden;
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(135deg,#050505,#111,#1a1a1a);
+  background:url("bg.jpg") center/cover no-repeat;
   z-index:-2;
 }
 
-.hero::after{
+body::after{
   content:"";
-  position:absolute;
+  position:fixed;
   inset:0;
-  background:radial-gradient(circle at top, rgba(255,215,0,0.18), transparent 65%);
+  background:rgba(0,0,0,0.18);
   z-index:-1;
 }
 
-.card{
-  background:rgba(10,10,10,0.65);
-  padding:40px;
-  border-radius:30px;
-  text-align:center;
-  backdrop-filter:blur(10px);
-  width:90%;
-  max-width:500px;
-  border:1px solid rgba(255,215,0,0.15);
-}
-
-.names{
-  font-family:'Playfair Display', serif;
-  font-size:36px;
-  color:gold;
-  margin-bottom:10px;
-}
-
-.welcome{
-  font-family:'Marhey', sans-serif;
-  font-size:22px;
-  color:#fff;
-  margin-bottom:18px;
-  line-height:1.8;
-  text-shadow:0 0 10px rgba(255,215,0,0.25);
-}
-
-.box{
-  flex:1;
-  min-width:0;
-  background:rgba(255,255,255,0.08);
-  padding:10px 5px;
-  border-radius:12px;
-  text-align:center;
-}
-.box span{
-  display:block;
-  font-size:22px;
-  font-weight:bold;
-  color:gold;
-  text-shadow:0 0 10px rgba(255,215,0,0.4);
-}
-@keyframes bounce{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(6px);}
-}
-
-/* DETAILS */
-.details{
+/* ===== SECTIONS ===== */
+section{
+  width:100%;
   min-height:100vh;
-  background:linear-gradient(135deg,#0a0a0a,#121212,#0a0a0a);
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:40px;
-}
-
-.details-box{
-  width:90%;
-  max-width:600px;
-  text-align:center;
-}
-
-.title{
-  font-size:30px;
-  color:gold;
-  margin-bottom:25px;
-  font-family:'Playfair Display', serif;
-}
-
-.event-card{
-  margin:12px 0;
-  padding:18px;
-  border-radius:18px;
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,215,0,0.15);
-}
-
-.location-btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 25px;
-  border-radius:30px;
-  background:gold;
-  color:black;
-  text-decoration:none;
-}
-
-/* صور */
-.new-gallery{margin-top:30px;}
-.new-gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-.new-gallery-grid img{
-  width:100%;
-  border-radius:15px;
-  cursor:pointer;
-}
-
-/* تعليقات */
-#commentsBox div{
-  background:rgba(255,255,255,0.05);
-  padding:10px;
-  margin:10px;
-  border-radius:10px;
-  border:1px solid rgba(255,215,0,0.15);
-}
-
-/* لوجو */
-.maher-logo{
-  position:absolute;
-  top:20px;
-  left:20px;
-  width:110px;
-  height:110px;
-  display:flex;
   flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  background:radial-gradient(circle at top, rgba(255,215,0,0.25), rgba(0,0,0,0.6));
-  border:2px solid gold;
-  color:gold;
-}
-
-/* أزرار ثابتة */
-#music-btn,#whatsapp-btn{
-  position:fixed;
-  right:20px;
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-}
-
-#music-btn{
-  bottom:20px;
-  background:#000;
-  border:2px solid gold;
-  color:gold;
-  cursor:pointer;
-}
-
-#whatsapp-btn{
-  bottom:90px;
-  background:#25D366;
-  color:white;
-  text-decoration:none;
-}
-/* أنيميشن */
-.fade-up{opacity:0;transform:translateY(40px);transition:1s;}
-.show{opacity:1;transform:translateY(0);}
-
-/* موبايل */
-@media(max-width:768px){
-
-  .card{
-    padding:20px;
-  }
-
-.countdown{
-  display:flex !important;
-  flex-direction:row !important;
-  justify-content:space-between !important;
-  align-items:center;
-  gap:10px;
-}
-
-.box{
-  flex:1;
-  min-width:0;
   text-align:center;
-}
-  .box{
-    width:23%;
-    min-width:70px;
-    padding:12px 8px;
-    border-radius:18px;
-
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,215,0,0.25);
-
-    backdrop-filter:blur(10px);
-    box-shadow:0 0 15px rgba(255,215,0,0.08);
-
-    transition:0.3s;
-  }
-
-  .new-gallery-grid{
-    grid-template-columns:1fr;
-  }
-
+  padding:40px 20px;
+  scroll-snap-align:start;
+  position:relative;
 }
 
-
-
-.intro-line{
-  color:white;
-  font-size:32px;
-  letter-spacing:2px;
-  opacity:0;
-  text-align:center;
-  position:absolute;
-  font-family:'Playfair Display', serif;
-}
-
-/* أول جملة */
-
-
-
-/* اللوجو */
-.intro-logo{
-  position:absolute;
-  font-size:58px;
-  color:gold;
-  font-weight:900;
-  letter-spacing:6px;
-  text-align:center;
-  opacity:0;
-.intro-logo span{
-  margin:0 8px;
-  display:inline-block;
-}
-  text-shadow:
-    0 0 10px gold,
-    0 0 25px gold,
-    0 0 50px rgba(255,215,0,0.7);
-
-  animation:showLogo 2s forwards;
-  animation-delay:6s;
-}
-
-  
-  
-
-/* موبايل */@media(max-width:768px){
-
-  .intro-line{
-    font-size:22px;
-    padding:20px;
-  }
-
-  .intro-logo{
-  font-size:32px;
-  letter-spacing:3px;
-  text-align:center;
-  width:100%;
-  padding:0 15px;
-  line-height:1.4;
-.intro-logo span{
-  margin:0 8px;
-  display:inline-block;
-}
-  text-shadow:
-    0 0 10px gold,
-    0 0 20px rgba(255,215,0,0.8),
-    0 0 40px rgba(255,215,0,0.5);
-}
-  .countdown{
-    display:flex;
-    flex-wrap:nowrap;
-    justify-content:space-between;
-    align-items:center;
-    gap:6px;
-  }
-
-  .box{
-    flex:1;
-    min-width:0;
-    padding:10px 4px;
-    border-radius:14px;
-    text-align:center;
-  }
-
-  .box span{
-    font-size:18px;
-  }
-
-  .welcome{
-    font-size:18px;
-    line-height:1.7;
-  }
-
-}
-
- 
-/* START SCREEN */
+/* ===== INTRO ===== */
 #startScreen{
   position:fixed;
   inset:0;
@@ -376,105 +78,552 @@ body::before{
   animation:pulse 1.5s infinite;
 }
 
-/* CINEMATIC INTRO */
-#cinematicIntro{
+#introContainer{
   position:fixed;
   inset:0;
   background:black;
-  display:flex;
-  flex-direction:column;
+  display:none;
   justify-content:center;
   align-items:center;
   z-index:999998;
 }
 
-/* النصوص */
-.intro-line{
-  position:absolute;
-  color:white;
-  font-size:30px;
-  opacity:0;
-  transition:1s;
-  text-align:center;
+#introVideo{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:92vw;
+  max-height:80vh;
+  object-fit:contain;
+  background:black;
+  border-radius:22px;
+  z-index:999999;
+  display:none;
 }
 
-.intro-logo{
-  font-size:55px;
-  color:gold;
-  opacity:0;
-  text-shadow:0 0 20px gold;
-  transition:1s;
-}
-
-/* animation */
 @keyframes pulse{
   0%,100%{transform:scale(1);opacity:1;}
   50%{transform:scale(1.05);opacity:0.7;}
 }
+
+/* ===== CARD ===== */
+.card{
+  background:none;
+  border:none;
+  box-shadow:none;
+  width:100%;
+  padding:0;
+}
+
+/* ===== NAMES ===== */
+.names{
+  font-family:'Tangerine', cursive;
+  color:#fff;
+  line-height:1.2;
+  font-size:120px;
+  margin-top:20px;
+  margin-bottom:80px;
+  letter-spacing:4px;
+  font-weight:700;
+  text-shadow:2px 2px 4px rgba(0,0,0,0.8);
+  position:absolute;
+  top:60px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  padding:0 20px;
+  z-index:10;
+  animation:nameGlow 3s ease-in-out infinite;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+@keyframes nameGlow{
+  0%,100%{text-shadow:2px 2px 4px rgba(0,0,0,0.8);}
+  50%{text-shadow:2px 2px 6px rgba(0,0,0,0.8);}
+}
+
+@keyframes spark{
+  0%,100%{transform:translateX(-50%) scale(1); opacity:0.9;}
+  50%{transform:translateX(-50%) scale(1.4); opacity:1;}
+}
+
+.top-name, .bottom-name {
+  animation:fadeInName 1s ease-out;
+  font-weight:700;
+  display:inline;
+}
+
+.top-name {
+  animation-delay:0s;
+  font-size:inherit;
+  color:#fff;
+}
+
+.bottom-name {
+  animation-delay:0.2s;
+  font-size:inherit;
+  margin-top:0;
+  color:#fff;
+}
+
+.and {
+  font-size:80px;
+  margin:0 5px;
+  color:#FFD700;
+  text-shadow:0 0 20px rgba(255, 215, 0, 0.8);
+  animation:fadeInName 0.8s ease-out 0.1s both;
+  font-weight:700;
+  font-family:'Tangerine', cursive;
+}
+
+@keyframes fadeInName {
+  from {
+    opacity:0;
+    transform:scale(0.9);
+  }
+  to {
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* ===== WELCOME ===== */
+.welcome{
+  font-family:'Playfair Display', serif;
+  font-size:20px;
+  margin-bottom:80px;
+  text-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+/* ===== COUNTDOWN ===== */
+.countdown{
+  position:absolute;
+  bottom:260px;
+  left:50%;
+  transform:translateX(-50%) scale(0.95);
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  justify-content:center !important;
+  align-items:flex-end !important;
+  gap:10px !important;
+  width:100% !important;
+}
+
+.box{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center;
+  flex:0 0 auto !important;
+  width:70px !important;
+  min-width:70px !important;
+}
+
+.box small{
+  order:-1;
+  margin-bottom:6px;
+  font-family:'Playfair Display', serif;
+  font-size:12px;
+  letter-spacing:1px;
+  color:white;
+  text-transform:uppercase;
+  text-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+.box span{
+  width:70px;
+  height:70px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.35);
+  backdrop-filter:blur(8px);
+  border-radius:16px;
+  font-size:24px;
+  font-family:'Playfair Display', serif;
+  color:white;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,0.15), 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* ===== SCROLL DOWN TEXT ===== */
+.scroll-down{
+  position:absolute;
+  bottom:160px;
+  left:50%;
+  transform:translateX(-50%);
+  text-align:center;
+  cursor:pointer;
+}
+
+/* ===== FLOATING BUTTONS ===== */
+#music-btn, #whatsapp-btn{
+  position:fixed;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex !important;
+  justify-content:center;
+  align-items:center;
+  font-size:26px;
+  cursor:pointer;
+  z-index:99999;
+  transition:box-shadow 0.3s ease;
+  border:2px solid rgba(255, 255, 255, 0.9);
+  text-decoration:none;
+  right:20px;
+}
+
+#music-btn{
+  bottom:80px;
+  background:linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 180, 0, 0.7));
+  box-shadow:
+    0 0 30px rgba(255, 215, 0, 0.9),
+    0 8px 25px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+#whatsapp-btn{
+  bottom:30px;
+  background:linear-gradient(135deg, rgba(34, 177, 76, 0.9), rgba(25, 150, 60, 0.7));
+  color:#fff;
+  text-decoration:none;
+  box-shadow:
+    0 0 30px rgba(34, 177, 76, 0.9),
+    0 8px 25px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+#music-btn:hover{
+  box-shadow:
+    0 0 50px rgba(255, 215, 0, 1),
+    0 12px 35px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+#whatsapp-btn:hover{
+  box-shadow:
+    0 0 50px rgba(34, 177, 76, 1),
+    0 12px 35px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+#music-btn:active, #whatsapp-btn:active{
+  box-shadow:
+    0 0 20px rgba(255, 215, 0, 0.8),
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* ===== DETAILS ===== */
+.details-box{
+  width:92%;
+  max-width:600px;
+  text-align:center;
+}
+
+.title{
+  font-size:26px;
+  color:gold;
+  margin-bottom:20px;
+  font-family:'Playfair Display', serif;
+}
+
+.event-card{
+  margin:10px auto;
+  padding:15px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,215,0,0.12);
+  text-align:center;
+}
+
+/* ===== GALLERY ===== */
+.new-gallery{
+  margin-top:25px;
+}
+
+.new-gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.new-gallery-grid img{
+  width:100%;
+  border-radius:12px;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+
+  section{
+    padding:30px 15px;
+  }
+
+  .names{
+    font-size:70px;
+    margin-top:10px;
+    margin-bottom:60px;
+    letter-spacing:2px;
+    top:40px;
+    gap:8px;
+  }
+
+  .top-name {
+    font-size:inherit;
+  }
+
+  .bottom-name {
+    font-size:inherit;
+  }
+
+  .names::after{
+    display:none;
+  }
+
+  .names::before{
+    display:none;
+  }
+
+  .and {
+    font-size:60px;
+    margin:0 2px;
+  }
+
+  .welcome{
+    font-size:16px;
+  }
+
+  .countdown{
+    bottom:240px;
+    gap:8px !important;
+    transform:translateX(-50%) scale(0.95);
+  }
+
+  .scroll-down{
+    bottom:150px;
+  }
+
+  .box{
+    width:65px !important;
+    min-width:65px !important;
+  }
+
+  .box span{
+    width:65px;
+    height:65px;
+    font-size:20px;
+  }
+
+  .box small{
+    font-size:10px;
+  }
+
+  .new-gallery-grid{
+    grid-template-columns:1fr;
+  }
+
+  #music-btn, #whatsapp-btn{
+    width:48px;
+    height:48px;
+    font-size:24px;
+  }
+
+  #music-btn{
+    bottom:75px;
+  }
+
+  #whatsapp-btn{
+    bottom:25px;
+  }
+}
+
+/* ===== SMALL PHONES ===== */
+@media(max-width:480px){
+
+  .names{
+    font-size:55px;
+    top:35px;
+    gap:4px;
+  }
+
+  .and{
+    font-size:48px;
+  }
+
+  .countdown{
+    bottom:230px;
+    gap:6px !important;
+    transform:translateX(-50%) scale(0.92);
+  }
+
+  .scroll-down{
+    bottom:140px;
+  }
+
+  .box{
+    width:60px !important;
+    min-width:60px !important;
+  }
+
+  .box span{
+    width:60px;
+    height:60px;
+    font-size:18px;
+  }
+
+  .box small{
+    font-size:9px;
+  }
+
+  #music-btn, #whatsapp-btn{
+    width:45px;
+    height:45px;
+    font-size:22px;
+  }
+
+  #music-btn{
+    bottom:70px;
+  }
+
+  #whatsapp-btn{
+    bottom:20px;
+  }
+}
+
+.new-gallery-grid{
+  grid-template-columns:1fr;
+}
+
+/* animation */
+@media(max-width:768px){
+
+  .mobile-stars{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:-1;
+  }
+
+  .mobile-stars span{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:gold;
+    border-radius:50%;
+    opacity:.7;
+    box-shadow:0 0 10px gold;
+    animation:starsMove linear infinite;
+  }
+
+  .mobile-stars span:nth-child(1){left:10%;animation-duration:7s;animation-delay:0s;}
+  .mobile-stars span:nth-child(2){left:25%;animation-duration:9s;animation-delay:1s;}
+  .mobile-stars span:nth-child(3){left:40%;animation-duration:6s;animation-delay:2s;}
+  .mobile-stars span:nth-child(4){left:55%;animation-duration:8s;animation-delay:1s;}
+  .mobile-stars span:nth-child(5){left:70%;animation-duration:10s;animation-delay:3s;}
+  .mobile-stars span:nth-child(6){left:82%;animation-duration:7s;animation-delay:2s;}
+  .mobile-stars span:nth-child(7){left:90%;animation-duration:11s;animation-delay:1s;}
+  .mobile-stars span:nth-child(8){left:50%;animation-duration:8s;animation-delay:4s;}
+  .mobile-stars span:nth-child(9){left:15%;animation-duration:12s;}
+  .mobile-stars span:nth-child(10){left:33%;animation-duration:9s;}
+  .mobile-stars span:nth-child(11){left:48%;animation-duration:7s;}
+  .mobile-stars span:nth-child(12){left:62%;animation-duration:11s;}
+  .mobile-stars span:nth-child(13){left:77%;animation-duration:8s;}
+  .mobile-stars span:nth-child(14){left:88%;animation-duration:10s;}
+  .mobile-stars span:nth-child(15){left:5%;animation-duration:13s;}
+  .mobile-stars span:nth-child(16){left:27%;animation-duration:6s;}
+  .mobile-stars span:nth-child(17){left:41%;animation-duration:14s;}
+  .mobile-stars span:nth-child(18){left:58%;animation-duration:9s;}
+  .mobile-stars span:nth-child(19){left:73%;animation-duration:12s;}
+  .mobile-stars span:nth-child(20){left:95%;animation-duration:7s;}
+
+  @keyframes starsMove{
+    from{
+      transform:translateY(100vh);
+      opacity:0;
+    }
+    20%{
+      opacity:.8;
+    }
+    to{
+      transform:translateY(-10vh);
+      opacity:0;
+    }
+  }
+}
 </style>
 </head>
-
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
 <script>
-
 firebase.initializeApp({
   apiKey: "AIzaSyAEQbYRt4JN_5QXqN6s94BqmZ4zAEqAsN0",
   databaseURL: "https://fared26-default-rtdb.firebaseio.com/"
 });
 
 var db = firebase.database();
-
 </script>
 
-
 <body>
-<!-- START SCREEN -->
-<div id="startScreen">
-  CLICK TO START
-</div>
-<!-- AUDIO -->
-<audio id="voice" src="voice.mp3"></audio>
-<audio id="introMusic" src="intro-music.mp3"></audio>
-<!-- CINEMATIC INTRO -->
-<div id="cinematicIntro">
-  <div class="intro-line" id="line1">Every Love Story Is Beautiful...</div>
-  <div class="intro-line" id="line2">But Ours Is My Favorite ❤️</div>
-  <div class="intro-logo" id="logo">
- Eng FARED <span></span> 
-</div>
+ <div class="mobile-stars">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
 </div>
 
-<!-- LIGHTBOX -->
+<div id="startScreen">CLICK TO START</div>
+<div id="introContainer"></div>
+<video id="introVideo" src="intro.mp4" playsinline></video>
+
 <div id="lightbox" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:#000c;justify-content:center;align-items:center;z-index:9999;">
 <img id="lightbox-img" style="max-width:90%;max-height:80%;border-radius:20px;">
 </div>
 
-<!-- HERO -->
 <section class="hero">
-<div class="maher-logo"><span>ENG</span><b>MAHER</b></div>
-
 <div class="card">
-<div class="names">Fared & Shrouk</div>
-<div class="welcome">يسرنا دعوتكم لحضور حفل زفافنا</div>
+<div class="names">
+    <div class="top-name">Fared</div>
+    <div class="and">&</div>
+    <div class="bottom-name">Shrouk</div>
+</div>
 
 <div class="countdown">
-<div class="box"><span id="days">0</span><br>يوم</div>
-<div class="box"><span id="hours">0</span><br>ساعة</div>
-<div class="box"><span id="minutes">0</span><br>دقيقة</div>
-<div class="box"><span id="seconds">0</span><br>ثانية</div>
+  <div class="box">
+    <small>Days</small>
+    <span id="days">0</span>
+  </div>
+  <div class="box">
+    <small>Hours</small>
+    <span id="hours">0</span>
+  </div>
+  <div class="box">
+    <small>Minutes</small>
+    <span id="minutes">0</span>
+  </div>
+  <div class="box">
+    <small>Seconds</small>
+    <span id="seconds">0</span>
+  </div>
 </div>
 
 <div class="scroll-down" onclick="document.querySelector('.details').scrollIntoView({behavior:'smooth'})">
 ⬇️ انزل للأسفل
 </div>
 
-</div> <!-- قفلة card -->
-
+</div>
 </section>
-<!-- DETAILS -->
+
 <section class="details">
 <div class="details-box">
 
@@ -492,7 +641,6 @@ var db = firebase.database();
 <iframe src="https://www.google.com/maps?q=G+Marriott+Hall+Talkha&output=embed"
 width="100%" height="250" style="margin-top:15px;border:none;border-radius:15px;"></iframe>
 
-<!-- 📸 الصور -->
 <div class="new-gallery fade-up">
 <div class="new-gallery-grid">
 <img src="1.jpg" onclick="openImg(this)">
@@ -502,7 +650,6 @@ width="100%" height="250" style="margin-top:15px;border:none;border-radius:15px;
 </div>
 </div>
 
-<!-- 💬 التعليقات -->
 <div style="margin-top:30px;">
 <h3 style="color:gold;">💬 مباركه للعروسين</h3>
 
@@ -519,17 +666,14 @@ width="100%" height="250" style="margin-top:15px;border:none;border-radius:15px;
 </div>
 </section>
 
-<!-- 🎵 MUSIC -->
-<audio id="bgMusic" loop>
-<source src="background-music.mp3" type="audio/mpeg">
+<audio id="bgMusic" loop preload="auto">
+  <source src="background-music.mp3" type="audio/mpeg">
 </audio>
 
-<div id="music-btn" onclick="toggleMusic()">🔇</div>
-
+<div id="music-btn" onclick="toggleMusic()">🔊</div>
 <a href="https://wa.me/201069845776" target="_blank" id="whatsapp-btn">💬</a>
+
 <script>
-// عداد
-// ===== COUNTDOWN =====
 const weddingDate = new Date("2026-06-29T00:00:00").getTime();
 
 function updateCountdown() {
@@ -549,16 +693,6 @@ function updateCountdown() {
   document.getElementById("seconds").innerText = seconds;
 }
 
-// تشغيل أول مرة
-updateCountdown();
-
-// تحديث كل ثانية
-setInterval(updateCountdown, 1000);
-// موسيقى
-
-
-
-// تعليقات محفوظة
 function addComment(){
   let name=document.getElementById("name").value;
   let msg=document.getElementById("msg").value;
@@ -574,20 +708,14 @@ function addComment(){
   document.getElementById("msg").value="";
 }
 
-// عرض التعليقات
 db.ref("comments").on("child_added", function(snapshot){
-
   let data = snapshot.val();
-
   let div = document.createElement("div");
   div.innerHTML = "<b style='color:gold'>" + data.name + "</b><br>" + data.msg;
-
   document.getElementById("commentsBox").appendChild(div);
-
 });
-// انيميشن
 
-  function handleScrollAnimation(){
+function handleScrollAnimation(){
   document.querySelectorAll('.fade-up').forEach(el => {
     if(el.getBoundingClientRect().top < window.innerHeight - 100){
       el.classList.add('show');
@@ -598,117 +726,54 @@ db.ref("comments").on("child_added", function(snapshot){
 window.addEventListener('scroll', handleScrollAnimation);
 window.addEventListener('load', handleScrollAnimation);
 
+window.toggleMusic = function(){
+  const bgMusic = document.getElementById("bgMusic");
+  const btn = document.getElementById("music-btn");
 
-
-// ===== MUSIC TOGGLE =====
-
-
-
-  /* =========================
-     MUSIC TOGGLE
-  ========================= */
-  window.toggleMusic = function(){
-
-    if(!bgMusic) return;
-
-    if(bgMusic.paused){
-      bgMusic.volume = 0.6;
-      bgMusic.play();
-      btn.innerHTML = "🔊";
-    } else {
-      bgMusic.pause();
-      btn.innerHTML = "🔇";
-    }
-  };
-
-  /* =========================
-     INTRO SEQUENCE (FIXED FLOW)
-  ========================= */
-const startScreen = document.getElementById("startScreen");
-
-const intro = document.getElementById("cinematicIntro");
-const line1 = document.getElementById("line1");
-const line2 = document.getElementById("line2");
-const logo = document.getElementById("logo");
-
-const voice = document.getElementById("voice");
-const introMusic = document.getElementById("introMusic");
-
-function runIntro(){
-
-  // reset
-  introMusic.currentTime = 0;
-  voice.currentTime = 0;
-
-  introMusic.volume = 0.7;
-  voice.volume = 1;
-
-  introMusic.play();
-  voice.play();
-
-  // Step 1
-  setTimeout(()=>{
-    line1.style.opacity = "1";
-  }, 500);
-
-  // Step 2
-  setTimeout(()=>{
-    line1.style.opacity = "0";
-    line2.style.opacity = "1";
-  }, 3500);
-
-  // Step 3
-  setTimeout(()=>{
-    line2.style.opacity = "0";
-    logo.style.opacity = "1";
-  }, 6500);
-
-  // End intro
-  setTimeout(()=>{
-
-    introMusic.pause();
-    voice.pause();
-
-    // تشغيل موسيقى الموقع
-    const bgMusic = document.getElementById("bgMusic");
-
-    bgMusic.volume = 0.8;
+  if(bgMusic.paused){
+    bgMusic.volume = 0.3;
     bgMusic.play();
-
-    // تغيير زر الصوت
-    document.getElementById("music-btn").innerHTML = "🔊";
-
-    // إخفاء الانترو
-    intro.style.transition = "1s";
-    intro.style.opacity = "0";
-
-    setTimeout(()=>{
-      intro.remove();
-    }, 1000);
-
-  }, 10000);
-}
-
-// START CLICK
-startScreen.addEventListener("click", async ()=>{
-
-  startScreen.style.display = "none";
-
-  try{
-    await introMusic.play();
-    await voice.play();
-
-    introMusic.pause();
-    voice.pause();
-
-  }catch(e){
-    console.log("audio blocked", e);
+    btn.innerHTML = "🔊";
+  } else {
+    bgMusic.pause();
+    btn.innerHTML = "🔇";
   }
+};
 
-  runIntro();
+const startScreen = document.getElementById("startScreen");
+const introVideo = document.getElementById("introVideo");
+const introContainer = document.getElementById("introContainer");
+const bgMusic = document.getElementById("bgMusic");
+
+startScreen.addEventListener("click", async () => {
+  startScreen.style.display = "none";
+  introContainer.style.display = "flex";
+  introVideo.style.display = "block";
+
+  try {
+    await introVideo.play();
+  } catch(e){}
 });
 
+introVideo.addEventListener("ended", () => {
+  introContainer.style.display = "none";
+  introVideo.style.display = "none";
+  bgMusic.volume = 0.5;
+  bgMusic.play();
+  document.getElementById("music-btn").innerHTML = "🔊";
+});
 
+document.body.style.overflow = "auto";
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+function openImg(img){
+  document.getElementById("lightbox").style.display = "flex";
+  document.getElementById("lightbox-img").src = img.src;
+}
 </script>
 </body>
 </html>
+
+
